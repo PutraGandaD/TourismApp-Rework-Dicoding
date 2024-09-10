@@ -11,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId "com.dicoding.tourismapp"
-        minSdkVersion 19
+        minSdkVersion 24
         targetSdkVersion 34
         versionCode 1
         versionName "1.0"
@@ -39,39 +39,56 @@ android {
     }
 }
 
-dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation "androidx.appcompat:appcompat:$appcompat_version"
-    implementation "androidx.core:core-ktx:$core_ktx_version"
-    implementation "androidx.constraintlayout:constraintlayout:$constraint_version"
-    implementation "androidx.legacy:legacy-support-v4:$legacy_support_version"
-    testImplementation "junit:junit:$junit_version"
-    androidTestImplementation "androidx.test.ext:junit:$androidx_junit_version"
-    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"
-    implementation "androidx.multidex:multidex:$multidex_version"
+dependencies {// ViewModel
+    implementation(libs.lifecycle.viewmodel.ktx)
+    // ViewModel utilities for Compose
+    implementation(libs.lifecycle.viewmodel.compose)
+    // LiveData
+    implementation(libs.lifecycle.livedata.ktx)
+    // Lifecycles only (without ViewModel or LiveData)
+    implementation(libs.lifecycle.runtime.ktx)
+    // Lifecycle utilities for Compose
+    implementation(libs.lifecycle.runtime.compose)
+    // Saved state module for ViewModel
+    implementation(libs.lifecycle.viewmodel.savedstate)
+    // Annotation processor
+    implementation(libs.lifecycle.compiler)
 
-    implementation "androidx.cardview:cardview:$cardview_version"
-    implementation "androidx.recyclerview:recyclerview:$recyclerview_version"
-    implementation "com.google.android.material:material:$material_version"
-    implementation "com.github.bumptech.glide:glide:$glide_version"
+    implementation(libs.core.ktx)
+    implementation(libs.appcompat)
+    implementation(libs.material.design)
+    implementation(libs.constraintlayout)
+    implementation(libs.navigation.fragment.ktx)
+    implementation(libs.navigation.ui.ktx)
 
-    implementation "androidx.room:room-runtime:$room_version"
-    kapt "androidx.room:room-compiler:$room_version"
-    androidTestImplementation "androidx.room:room-testing:$room_version"
+    // Retrofit
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.converter.gson)
+    implementation(libs.okhttp.logging.interceptor)
+    implementation(libs.serialization.json)
 
-    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
-    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
-    implementation "com.squareup.okhttp3:logging-interceptor:$logging_interceptor_version"
-
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlin_coroutines_version"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlin_coroutines_version"
-    implementation "androidx.room:room-ktx:$room_version"
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
-
+    // Koin (Dependency Injection)
     // Declare koin-bom version
-    implementation platform("io.insert-koin:koin-bom:$koin_version")
-
+    implementation(platform(libs.koin.bom))
+    implementation(libs.koin.core)
     // Declare the koin dependencies that you need
-    implementation("io.insert-koin:koin-android")
-    implementation("io.insert-koin:koin-core-coroutines")
+    implementation(libs.koin.android)
+    implementation(libs.koin.core.coroutines)
+    implementation(libs.koin.androidx.workmanager)
+
+    // Unit Test
+    testImplementation(libs.truth)
+    testImplementation(libs.mockwebserver)
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.test.ext.junit)
+    androidTestImplementation(libs.espresso.core)
+
+    // Room
+    implementation(libs.room.runtime)
+    implementation(libs.room.ktx)
+    annotationProcessor(libs.room.compiler)
+    kapt(libs.room.compiler)
+
+    // Glide
+    implementation(libs.glide)
 }
