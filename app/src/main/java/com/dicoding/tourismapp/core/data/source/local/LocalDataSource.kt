@@ -22,7 +22,7 @@ class LocalDataSource(private val tourismDao: TourismDao) {
 
     suspend fun insertTourism(tourismList: List<TourismEntity>) = tourismDao.insertTourism(tourismList)
 
-    fun setFavoriteTourism(tourism: TourismEntity, newState: Boolean) {
+    suspend fun setFavoriteTourism(tourism: TourismEntity, newState: Boolean) {
         tourism.isFavorite = newState
         tourismDao.updateFavoriteTourism(tourism)
     }
