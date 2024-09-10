@@ -39,7 +39,17 @@ android {
     }
 }
 
-dependencies {// ViewModel
+dependencies {
+    implementation(project(":core:data"))
+    implementation(project(":core:domain"))
+    implementation(project(":core:ui"))
+    implementation(project(":core:utils"))
+
+    implementation(project(":feature:detail"))
+    implementation(project(":feature:home"))
+    implementation(project(":feature:favorite"))
+
+    // ViewModel
     implementation(libs.lifecycle.viewmodel.ktx)
     // ViewModel utilities for Compose
     implementation(libs.lifecycle.viewmodel.compose)

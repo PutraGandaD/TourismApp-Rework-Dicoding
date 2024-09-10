@@ -27,7 +27,7 @@
         </activity>
 
         <activity
-            android:name=".detail.DetailTourismActivity"
+            android:name=".feature.detail.DetailTourismActivity"
             android:label="@string/title_activity_detail_home"
             android:theme="@style/Theme.TourismApp.NoActionBar"
             android:exported="true"/>

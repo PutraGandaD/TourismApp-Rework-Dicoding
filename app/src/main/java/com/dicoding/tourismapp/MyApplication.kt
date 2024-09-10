@@ -18,13 +18,11 @@ class MyApplication : Application() {
             androidLogger(Level.NONE)
             androidContext(this@MyApplication)
             modules(
-                listOf(
-                    databaseModule,
-                    networkModule,
-                    repositoryModule,
-                    useCaseModule,
-                    viewModelModule
-                )
+                useCaseModule,
+                viewModelModule,
+                databaseModule,
+                networkModule,
+                repositoryModule
             )
         }
     }
