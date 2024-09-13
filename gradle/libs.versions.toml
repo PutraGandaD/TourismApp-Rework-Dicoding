@@ -22,7 +22,6 @@ glide = "4.16.0"
 circle-image-view = "3.1.0"
 facebook-shimmer = "0.5.0"
 work-manager-ktx = "2.7.1"
-room-db = "2.6.1"
 
 android-gradle-plugin = "8.2.0"
 kotlin-android = "1.9.10"
@@ -32,6 +31,7 @@ kotlin-kapt = "1.9.24"
 google-services = "4.4.2"
 firebase-perf = "1.4.2"
 kotlin-parcelize = "2.0.20"
+room-db = "2.6.1"
 
 [libraries]
 lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
