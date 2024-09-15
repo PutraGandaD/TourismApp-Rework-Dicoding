@@ -3,9 +3,11 @@ package com.dicoding.tourismapp.core.di
 import androidx.room.Room
 import com.dicoding.tourismapp.core.data.TourismRepository
 import com.dicoding.tourismapp.core.data.source.local.LocalDataSource
+import com.dicoding.tourismapp.core.data.source.local.room.TourismDao
 import com.dicoding.tourismapp.core.data.source.local.room.TourismDatabase
 import com.dicoding.tourismapp.core.data.source.remote.RemoteDataSource
 import com.dicoding.tourismapp.core.data.source.remote.network.ApiService
+import com.dicoding.tourismapp.core.domain.model.Tourism
 import com.dicoding.tourismapp.core.domain.repository.ITourismRepository
 import com.dicoding.tourismapp.core.utils.AppExecutors
 import okhttp3.OkHttpClient
@@ -17,12 +19,17 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 val databaseModule = module {
-    factory { get<TourismDatabase>().tourismDao() }
     single {
         Room.databaseBuilder(
-            androidContext(),
-            TourismDatabase::class.java, "Tourism.db"
-        ).fallbackToDestructiveMigration().build()
+            get(),
+            TourismDatabase::class.java,
+            "tourism_database"
+        ).build()
+    }
+
+    single<TourismDao> {
+        val database = get<TourismDatabase>()
+        database.tourismDao()
     }
 }
 
@@ -47,6 +54,5 @@ val networkModule = module {
 val repositoryModule = module {
     single { LocalDataSource(get()) }
     single { RemoteDataSource(get()) }
-    factory { AppExecutors() }
-    single<ITourismRepository> { TourismRepository(get(), get(), get()) }
+    single<ITourismRepository> { TourismRepository(get(), get()) }
 }

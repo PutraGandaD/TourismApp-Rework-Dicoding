@@ -40,6 +40,8 @@ dependencies {
     implementation libs.core.ktx
     implementation libs.appcompat
     implementation libs.material.design
+    implementation libs.androidx.navigation.fragment.ktx
+    implementation libs.androidx.navigation.ui.ktx
     testImplementation libs.junit
     androidTestImplementation libs.test.ext.junit
     androidTestImplementation libs.espresso.core

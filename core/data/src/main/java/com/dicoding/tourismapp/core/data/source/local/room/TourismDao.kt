@@ -6,12 +6,11 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface TourismDao {
-
     @Query("SELECT * FROM tourism")
-    fun getAllTourism(): Flow<List<TourismEntity>>
+    suspend fun getAllTourism(): List<TourismEntity>
 
     @Query("SELECT * FROM tourism where isFavorite = 1")
-    fun getFavoriteTourism(): Flow<List<TourismEntity>>
+    suspend fun getFavoriteTourism(): List<TourismEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertTourism(tourism: List<TourismEntity>)

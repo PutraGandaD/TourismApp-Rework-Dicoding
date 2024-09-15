@@ -32,6 +32,8 @@ google-services = "4.4.2"
 firebase-perf = "1.4.2"
 kotlin-parcelize = "2.0.20"
 room-db = "2.6.1"
+navigation-fragment-ktx = "2.8.0"
+navigation-ui-ktx = "2.8.0"
 
 [libraries]
 lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
@@ -85,6 +87,8 @@ work-manager-ktx = { group = "androidx.work", name = "work-runtime-ktx", version
 room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room-db" }
 room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room-db" }
 room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room-db" }
+androidx-navigation-fragment-ktx = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigation-fragment-ktx" }
+androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigation-ui-ktx" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "android-gradle-plugin" }

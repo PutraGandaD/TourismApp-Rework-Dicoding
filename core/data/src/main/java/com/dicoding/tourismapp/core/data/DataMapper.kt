@@ -24,9 +24,25 @@ object DataMapper {
         return tourismList
     }
 
+    fun mapResponsesToDomain(input: List<TourismResponse>) : List<Tourism> =
+        input.map {
+            Tourism(
+                tourismId = it.id,
+                description = it.description,
+                name = it.name,
+                address = it.address,
+                latitude = it.latitude,
+                longitude = it.longitude,
+                like = it.like,
+                image = it.image,
+                isFavorite = false
+            )
+        }
+
+
     fun mapEntitiesToDomain(input: List<TourismEntity>): List<Tourism> =
         input.map {
-            com.dicoding.tourismapp.core.domain.model.Tourism(
+            Tourism(
                 tourismId = it.tourismId,
                 description = it.description,
                 name = it.name,

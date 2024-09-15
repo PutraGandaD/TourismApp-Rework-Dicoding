@@ -5,20 +5,9 @@ import com.dicoding.tourismapp.core.data.source.local.room.TourismDao
 import kotlinx.coroutines.flow.Flow
 
 class LocalDataSource(private val tourismDao: TourismDao) {
+    suspend fun getAllTourism(): List<TourismEntity> = tourismDao.getAllTourism()
 
-//    hapus kode berikut
-//    companion object {
-//        private var instance: LocalDataSource? = null
-//
-//        fun getInstance(tourismDao: TourismDao): LocalDataSource =
-//            instance ?: synchronized(this) {
-//                instance ?: LocalDataSource(tourismDao)
-//            }
-//    }
-
-    fun getAllTourism(): Flow<List<TourismEntity>> = tourismDao.getAllTourism()
-
-    fun getFavoriteTourism(): Flow<List<TourismEntity>> = tourismDao.getFavoriteTourism()
+    suspend fun getFavoriteTourism(): List<TourismEntity> = tourismDao.getFavoriteTourism()
 
     suspend fun insertTourism(tourismList: List<TourismEntity>) = tourismDao.insertTourism(tourismList)
 
