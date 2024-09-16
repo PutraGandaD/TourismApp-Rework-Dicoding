@@ -8,22 +8,28 @@ import androidx.lifecycle.viewModelScope
 import com.dicoding.tourismapp.core.domain.model.Tourism
 import com.dicoding.tourismapp.core.domain.usecase.TourismUseCase
 import com.dicoding.tourismapp.core.utils.Resource
+import com.dicoding.tourismapp.feature.favorite.FavoriteUiState
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 class FavoriteViewModel(
     private val tourismUseCase: TourismUseCase
 ) : ViewModel() {
-    private val _favoriteTourismData = MutableLiveData<List<Tourism>>()
-    val favoriteTourismData : LiveData<List<Tourism>>
-        get() = _favoriteTourismData
+    private val _favoriteTourismData = MutableStateFlow(FavoriteUiState())
+    val favoriteTourismData = _favoriteTourismData.asStateFlow()
 
     init {
         getFavoriteTourismData()
     }
 
     private fun getFavoriteTourismData() = viewModelScope.launch {
-        tourismUseCase.getFavoriteTourism().collect {
-            _favoriteTourismData.value = it
+        tourismUseCase.getFavoriteTourism().collectLatest { result ->
+            _favoriteTourismData.update { currentUiState ->
+                currentUiState.copy(data = result)
+            }
         }
     }
 }

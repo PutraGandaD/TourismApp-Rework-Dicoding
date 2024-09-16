@@ -5,11 +5,18 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.NavDeepLinkRequest
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.tourismapp.core.ui.TourismAdapter
-import com.dicoding.tourismapp.feature.detail.DetailTourismActivity
 import com.dicoding.tourismapp.feature.favorite.databinding.FragmentFavoriteBinding
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class FavoriteFragment : Fragment() {
@@ -18,6 +25,8 @@ class FavoriteFragment : Fragment() {
 
     private var _binding: FragmentFavoriteBinding? = null
     private val binding get() = _binding!!
+
+    private val tourismAdapter = TourismAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,24 +39,41 @@ class FavoriteFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        if (activity != null) {
-            val tourismAdapter = TourismAdapter()
-            tourismAdapter.onItemClick = { selectedData ->
-                val intent = Intent(activity, DetailTourismActivity::class.java)
-                intent.putExtra(DetailTourismActivity.EXTRA_DATA, selectedData)
-                startActivity(intent)
-            }
+        onClickListener()
+        setUpRvAdapter()
+        observer()
+    }
 
-            favoriteViewModel.favoriteTourismData.observe(viewLifecycleOwner, {dataTourism ->
-                tourismAdapter.setData(dataTourism)
-                binding.viewEmpty.root.visibility = if (dataTourism.isNotEmpty()) View.GONE else View.VISIBLE
-            })
-
-            with(binding.rvTourism) {
-                layoutManager = LinearLayoutManager(context)
-                setHasFixedSize(true)
-                adapter = tourismAdapter
+    private fun observer() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                favoriteViewModel.favoriteTourismData.collectLatest { uiState ->
+                    if(!uiState.data.isNullOrEmpty()) {
+                        tourismAdapter.setData(uiState.data)
+                        binding.viewEmpty.root.visibility = View.GONE
+                    } else {
+                        tourismAdapter.setData(emptyList())
+                        binding.viewEmpty.root.visibility = View.VISIBLE
+                    }
+                }
             }
+        }
+    }
+
+    private fun onClickListener() {
+        tourismAdapter.onItemClick = { selectedData ->
+            val request = NavDeepLinkRequest.Builder
+                .fromUri("android-app://com.dicoding.tourismapp/detail_screen/${selectedData.tourismId}".toUri())
+                .build()
+            findNavController().navigate(request)
+        }
+    }
+
+    private fun setUpRvAdapter() {
+        with(binding.rvTourism) {
+            layoutManager = LinearLayoutManager(context)
+            setHasFixedSize(true)
+            adapter = tourismAdapter
         }
     }
 

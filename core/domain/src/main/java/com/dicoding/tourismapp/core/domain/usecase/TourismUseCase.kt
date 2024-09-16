@@ -7,5 +7,6 @@ import kotlinx.coroutines.flow.Flow
 interface TourismUseCase {
     suspend fun getAllTourism(): Flow<Resource<List<Tourism>>>
     suspend fun getFavoriteTourism(): Flow<List<Tourism>>
+    suspend fun getTourismById(id: String) : Flow<Tourism>
     suspend fun setFavoriteTourism(tourism: Tourism, state: Boolean)
 }

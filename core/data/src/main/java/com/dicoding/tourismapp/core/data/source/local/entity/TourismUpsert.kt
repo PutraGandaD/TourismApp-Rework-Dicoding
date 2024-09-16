@@ -5,8 +5,8 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "tourism")
-data class TourismEntity(
+@Entity
+data class TourismUpsert(
     @PrimaryKey
     @NonNull
     @ColumnInfo(name = "tourismId")
@@ -31,10 +31,5 @@ data class TourismEntity(
     var like: Int,
 
     @ColumnInfo(name = "image")
-    var image: String,
-
-    // default value is false
-    // 0 = false, 1 = true
-    @ColumnInfo(name = "isFavorite", defaultValue = "0")
-    var isFavorite: Boolean
+    var image: String
 )

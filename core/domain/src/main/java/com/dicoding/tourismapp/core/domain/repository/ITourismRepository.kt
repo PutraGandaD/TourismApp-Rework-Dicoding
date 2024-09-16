@@ -12,4 +12,6 @@ interface ITourismRepository {
 
     suspend fun setFavoriteTourism(tourism: Tourism, state: Boolean)
 
+    suspend fun getTourismById(id: String) : Flow<Tourism>
+
 }

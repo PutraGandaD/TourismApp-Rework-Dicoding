@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.DetailScreen" parent="Theme.BaseTheme.Tourism">
+        <item name="toolbarStyle">@style/Widget.App.Toolbar</item>
+        <item name="collapsingToolbarLayoutLargeStyle">@style/Widget.App.CollapsingToolbar</item>
+    </style>
+
+    <style name="Widget.App.Toolbar" parent="Widget.Material3.Toolbar">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.Toolbar</item>
+    </style>
+
+    <style name="Widget.App.CollapsingToolbar" parent="Widget.Material3.CollapsingToolbar.Large">
+        <item name="expandedTitleTextColor">@android:color/white</item>
+        <item name="collapsedTitleTextColor">@android:color/white</item>
+    </style>
+
+    <style name="ThemeOverlay.App.Toolbar" parent="">
+        <item name="titleTextColor">@android:color/white</item>
+        <item name="subtitleTextColor">@android:color/white</item>
+    </style>
+</resources>

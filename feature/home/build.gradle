@@ -37,8 +37,6 @@ dependencies {
     implementation(project(":core:domain"))
     implementation(project(":core:utils"))
 
-    implementation(project(":feature:detail"))
-
     // ViewModel
     implementation(libs.lifecycle.viewmodel.ktx)
     // ViewModel utilities for Compose

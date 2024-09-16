@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/detail_tourism_navgraph"
-    app:startDestination="@id/detailTourismActivity">
+    app:startDestination="@id/detailTourismFragment">
 
-    <activity
-        android:id="@+id/detailTourismActivity"
-        android:name="com.dicoding.tourismapp.feature.detail.DetailTourismActivity"
-        android:label="DetailTourismActivity" />
+    <fragment
+        android:id="@+id/detailTourismFragment"
+        android:name="com.dicoding.tourismapp.feature.detail.DetailTourismFragment"
+        android:label="fragment_detail_tourism"
+        tools:layout="@layout/fragment_detail_tourism" >
+        <argument
+            android:name="dataTourismId"
+            app:argType="string"
+            android:defaultValue="0" />
+        <deepLink
+            app:uri="android-app://com.dicoding.tourismapp/detail_screen/{dataTourismId}"/>
+    </fragment>
 </navigation>
