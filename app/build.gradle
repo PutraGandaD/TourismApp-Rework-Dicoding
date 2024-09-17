@@ -37,6 +37,7 @@ android {
     buildFeatures {
         viewBinding = true
     }
+    dynamicFeatures = [':feature:maps']
 }
 
 dependencies {
@@ -68,8 +69,9 @@ dependencies {
     implementation(libs.appcompat)
     implementation(libs.material.design)
     implementation(libs.constraintlayout)
-    implementation(libs.navigation.fragment.ktx)
-    implementation(libs.navigation.ui.ktx)
+    api(libs.androidx.navigation.fragment.ktx)
+    api(libs.androidx.navigation.ui.ktx)
+    api(libs.androidx.navigation.dynamic.feature.ktx)
 
     // Retrofit
     implementation(libs.retrofit)
@@ -101,4 +103,14 @@ dependencies {
 
     // Glide
     implementation(libs.glide)
+
+    // Dynamic Feature
+    implementation(libs.play.asset.delivery)
+    implementation(libs.play.asset.delivery.ktx)
+    implementation(libs.play.feature.delivery)
+    implementation(libs.play.feature.delivery.ktx)
+    implementation(libs.play.inapp.review)
+    implementation(libs.play.inapp.review.ktx)
+    implementation(libs.play.inapp.update)
+    implementation(libs.play.inapp.update.ktx)
 }

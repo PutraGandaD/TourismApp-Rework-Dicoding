@@ -1,0 +1,70 @@
+plugins {
+    alias(libs.plugins.android.dynamic.feature)
+    alias(libs.plugins.kotlin.android)
+}
+android {
+    namespace 'com.dicoding.tourismapp.feature.maps'
+    compileSdk 34
+
+    defaultConfig {
+        minSdk 24
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+    implementation(project(":app"))
+    implementation(project(":core:ui"))
+    implementation(project(":core:domain"))
+    implementation(project(":core:utils"))
+
+    // ViewModel
+    implementation(libs.lifecycle.viewmodel.ktx)
+    // ViewModel utilities for Compose
+    implementation(libs.lifecycle.viewmodel.compose)
+    // LiveData
+    implementation(libs.lifecycle.livedata.ktx)
+    // Lifecycles only (without ViewModel or LiveData)
+    implementation(libs.lifecycle.runtime.ktx)
+    // Lifecycle utilities for Compose
+    implementation(libs.lifecycle.runtime.compose)
+    // Saved state module for ViewModel
+    implementation(libs.lifecycle.viewmodel.savedstate)
+    // Annotation processor
+    implementation(libs.lifecycle.compiler)
+
+    implementation libs.core.ktx
+    implementation libs.appcompat
+    implementation libs.material.design
+    implementation libs.androidx.navigation.fragment.ktx
+    implementation libs.androidx.navigation.ui.ktx
+    testImplementation libs.junit
+    androidTestImplementation libs.test.ext.junit
+    androidTestImplementation libs.espresso.core
+
+    // Koin (Dependency Injection)
+    // Declare koin-bom version
+    implementation(platform(libs.koin.bom))
+    implementation(libs.koin.core)
+    // Declare the koin dependencies that you need
+    implementation(libs.koin.android)
+    implementation(libs.koin.core.coroutines)
+    implementation(libs.koin.androidx.workmanager)
+}
