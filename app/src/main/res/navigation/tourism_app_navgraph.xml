@@ -7,5 +7,10 @@
     <include app:graph="@navigation/home_tourism_navgraph" />
     <include app:graph="@navigation/favorite_tourism_navgraph" />
     <include app:graph="@navigation/detail_tourism_navgraph" />
+    <include-dynamic
+        android:id="@id/maps_tourism_navgraph"
+        app:moduleName="maps"
+        app:graphResName="maps_tourism_navgraph"
+        app:graphPackage="com.dicoding.tourismapp.maps"/>
 
 </navigation>

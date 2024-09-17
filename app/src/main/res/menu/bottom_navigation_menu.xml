@@ -10,4 +10,9 @@
         android:enabled="true"
         android:icon="@drawable/ic_favorite_black"
         android:title="Favorite"/>
+    <item
+        android:id="@+id/maps_tourism_navgraph"
+        android:enabled="true"
+        android:icon="@drawable/ic_map"
+        android:title="Maps"/>
 </menu>

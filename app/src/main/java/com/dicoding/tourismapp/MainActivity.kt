@@ -30,11 +30,11 @@ class MainActivity : AppCompatActivity() {
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when(destination.id) {
-                com.dicoding.tourismapp.feature.home.R.id.homeFragment, com.dicoding.tourismapp.feature.favorite.R.id.favoriteFragment -> {
-                    binding.bottomNavigation.visibility = View.VISIBLE
+                com.dicoding.tourismapp.feature.detail.R.id.detailTourismFragment -> {
+                    binding.bottomNavigation.visibility = View.GONE
                 }
                 else -> {
-                    binding.bottomNavigation.visibility = View.GONE
+                    binding.bottomNavigation.visibility = View.VISIBLE
                 }
             }
         }
