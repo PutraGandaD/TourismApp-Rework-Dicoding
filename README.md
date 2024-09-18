@@ -4,5 +4,5 @@ This repo is a major rework/refactor of Dicoding Tourism App because it's deprec
 Reworked to be inline with current Modern Android Development (MAD). <br>
 
 ## Application Demo
-![Demo](https://github.com/PutraGandaD/PutraGandaD_GIF_Public/blob/main/Dicoding_Tourism_Rework_Demo.webm.mp4)
+![Demo](https://github.com/PutraGandaD/PutraGandaD_GIF_Public/blob/main/DicodingApp_Tourism_Rework_Demo_Compressed.mp4)
 
