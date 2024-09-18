@@ -7,15 +7,29 @@ Reworked to be inline with current Modern Android Development (MAD). <br>
 - [x] Offline-first app, with recommended approach by Google (utilizing Single Source of Truth of data)
 - [x] UI built with Views, using Material Design 3 by Google 
 - [x] With Single Activity Approach, as recommended by Google
-- [x] With Clean Architecture and recommended app architecture by Google
+- [x] With Clean Architecture and recommended app architecture by Google, and Dependency Injection (Koin)
 - [x] With Reactive Programming, utilizing Kotlin Flow and Coroutines   
 - [x] Dynamic Feature Implementation
 
 ## Application Demo
 https://github.com/user-attachments/assets/5cbfd754-fe3c-470d-8ef0-fddce40ee351
 
+## Improvements compared to Old and Deprecated repo by Dicoding
+- [x] Inline with Modern Android Development (MAD) right now
+- [x] Not violating Clean Architecture principles, and also adhere to recommended App Architecture by Google    
+- [x] With Reactive Programming Approach (UI State, StateFlow, Kotlin Flow, Kotlin Coroutines, etc)
+- [x] Utilizing Jetpack Navigation Component for navigation between feature and dynamic features modules (Implicit Deeplink) 
+- [x] Better Dynamic Feature (On Demand Modules) implementation
+- [x] Offline-first implementation fully working
+- [x] No Internet Connection Check implemented  
+- [x] With Single Activity Approach
+- [x] UI Using Material Design 3 Completely
+- [x] Using Gradle Version Catalog for managing dependencies
+- [x] Fixed all deprecated and error in the project 
+
 ## Work In Progress
 - [ ] Search feature from SSOT
+- [ ] Build Gradle Convention Plugins
 
 
 
