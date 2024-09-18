@@ -9,7 +9,6 @@ import com.dicoding.tourismapp.core.data.source.remote.RemoteDataSource
 import com.dicoding.tourismapp.core.data.source.remote.network.ApiService
 import com.dicoding.tourismapp.core.domain.model.Tourism
 import com.dicoding.tourismapp.core.domain.repository.ITourismRepository
-import com.dicoding.tourismapp.core.utils.AppExecutors
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidContext

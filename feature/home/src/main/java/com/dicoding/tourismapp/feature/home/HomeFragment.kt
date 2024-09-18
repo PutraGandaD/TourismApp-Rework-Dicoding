@@ -14,6 +14,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.tourismapp.core.ui.TourismAdapter
 import com.dicoding.tourismapp.feature.home.databinding.FragmentHomeBinding
+import com.dicoding.tourismapp.feature.home.visibleNoInternet
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -66,6 +67,12 @@ class HomeFragment : Fragment() {
                         ).show()
                         homeViewModel.messageShowed()
                     }
+
+                    if(uiState.visibleNoInternet) {
+                        binding.viewNointernet.root.visibility = View.VISIBLE
+                    } else {
+                        binding.viewNointernet.root.visibility = View.GONE
+                    }
                 }
             }
         }
@@ -77,6 +84,10 @@ class HomeFragment : Fragment() {
                 .fromUri("android-app://com.dicoding.tourismapp/detail_screen/${selectedData.tourismId}".toUri())
                 .build()
             findNavController().navigate(request)
+        }
+
+        binding.viewNointernet.btnTryAgain.setOnClickListener {
+            homeViewModel.getTourismData()
         }
     }
 

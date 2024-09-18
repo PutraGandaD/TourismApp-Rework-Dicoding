@@ -8,6 +8,7 @@
         <item name="colorSecondary">@color/pink_200</item>
         <item name="colorSecondaryVariant">@color/pink_500</item>
         <item name="colorOnSecondary">@color/white</item>
+        <item name="android:windowTranslucentStatus">true</item>
     </style>
 
 </resources>
