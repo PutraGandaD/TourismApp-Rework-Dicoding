@@ -31,6 +31,18 @@ https://github.com/user-attachments/assets/5cbfd754-fe3c-470d-8ef0-fddce40ee351
 - [ ] Search feature from SSOT
 - [ ] Build Gradle Convention Plugins
 
+## References = 
+- https://developer.android.com/topic/modularization <br>
+- https://developer.android.com/topic/architecture#addendum <br>
+- https://developer.android.com/guide/navigation/integrations/multi-module <br>
+- https://developer.android.com/guide/navigation/integrations/feature-modules <br>
+- https://github.com/android/nowinandroid <br>
+- https://developer.android.com/topic/architecture/ui-layer <br>
+- https://developer.android.com/reference/kotlin/androidx/room/Upsert <br>
+- https://developer.android.com/guide/playcore/feature-delivery <br>
+- https://m3.material.io
+- and more ... (will be updated soon)
+
 
 
 
