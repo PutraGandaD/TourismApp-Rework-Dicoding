@@ -32,6 +32,7 @@ google-services = "4.4.2"
 firebase-perf = "1.4.2"
 kotlin-parcelize = "2.0.20"
 room-db = "2.6.1"
+hilt = "2.51.1"
 
 play-asset-delivery = "2.2.2"
 play-feature-delivery = "2.1.0"
@@ -64,6 +65,9 @@ koin-core = { module = "io.insert-koin:koin-core" }
 koin-android = { module = "io.insert-koin:koin-android" }
 koin-core-coroutines = { module = "io.insert-koin:koin-core-coroutines" }
 koin-androidx-workmanager = { module = "io.insert-koin:koin-androidx-workmanager" }
+
+hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
+hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "hilt" }
 
 play-services-location = { group = "com.google.android.gms", name = "play-services-location", version.ref = "play-services-location" }
 chucker-debug = { group = "com.github.chuckerteam.chucker", name = "library", version.ref = "chucker" }
@@ -112,3 +116,4 @@ android-library = { id = "com.android.library", version.ref = "android-gradle-pl
 google-services = { id = "com.google.gms.google-services", version.ref = "google-services" }
 firebase-perf = { id = "com.google.firebase.firebase-perf", version.ref = "firebase-perf" }
 android-dynamic-feature = { id = "com.android.dynamic-feature", version.ref = "android-gradle-plugin" }
+hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
