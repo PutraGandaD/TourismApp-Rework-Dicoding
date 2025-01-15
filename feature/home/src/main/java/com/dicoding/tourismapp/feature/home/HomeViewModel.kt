@@ -8,10 +8,7 @@ import com.dicoding.tourismapp.core.utils.Resource
 import com.dicoding.tourismapp.feature.home.HomeUiState
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
@@ -32,7 +29,7 @@ class HomeViewModel(
         getTourismDataJob?.cancel()
         getTourismDataJob = viewModelScope.launch {
             val hasInternetConnection = connectivityManager.hasInternetConnection()
-            if (hasInternetConnection) hasInternetConnection(true) else hasInternetConnection(false)
+            setInternetConnectionState(hasInternetConnection)
             tourismUseCase.getAllTourism().collect { result ->
                 when (result) {
                     is Resource.Success -> {
@@ -72,7 +69,7 @@ class HomeViewModel(
         }
     }
 
-    fun hasInternetConnection(boolean: Boolean) {
+    fun setInternetConnectionState(boolean: Boolean) {
         _tourismData.update { currentUiState ->
             currentUiState.copy(hasInternetConnection = boolean)
         }
