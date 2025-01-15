@@ -10,3 +10,4 @@ data class HomeUiState(
 )
 
 val HomeUiState.visibleNoInternet : Boolean get() = !isLoading && data.isNullOrEmpty() && !hasInternetConnection
+

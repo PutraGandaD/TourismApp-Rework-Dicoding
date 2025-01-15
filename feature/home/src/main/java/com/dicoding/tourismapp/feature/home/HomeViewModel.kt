@@ -31,39 +31,36 @@ class HomeViewModel(
     fun getTourismData() {
         getTourismDataJob?.cancel()
         getTourismDataJob = viewModelScope.launch {
-            if (connectivityManager.hasInternetConnection()) {
-                hasInternetConnection(true)
-                tourismUseCase.getAllTourism().collect { result ->
-                    when (result) {
-                        is Resource.Success -> {
-                            _tourismData.update { currentUiState ->
-                                currentUiState.copy(
-                                    isLoading = false,
-                                    data = result.data,
-                                    message = null
-                                )
-                            }
+            val hasInternetConnection = connectivityManager.hasInternetConnection()
+            if (hasInternetConnection) hasInternetConnection(true) else hasInternetConnection(false)
+            tourismUseCase.getAllTourism().collect { result ->
+                when (result) {
+                    is Resource.Success -> {
+                        _tourismData.update { currentUiState ->
+                            currentUiState.copy(
+                                isLoading = false,
+                                data = result.data,
+                                message = null
+                            )
                         }
+                    }
 
-                        is Resource.Error -> {
-                            _tourismData.update { currentUiState ->
-                                currentUiState.copy(
-                                    isLoading = false,
-                                    data = result.data,
-                                    message = result.message
-                                )
-                            }
+                    is Resource.Error -> {
+                        _tourismData.update { currentUiState ->
+                            currentUiState.copy(
+                                isLoading = false,
+                                data = result.data,
+                                message = if(!hasInternetConnection) "Tidak ada koneksi internet" else result.message
+                            )
                         }
+                    }
 
-                        is Resource.Loading -> {
-                            _tourismData.update { currentUiState ->
-                                currentUiState.copy(isLoading = true, data = null, message = null)
-                            }
+                    is Resource.Loading -> {
+                        _tourismData.update { currentUiState ->
+                            currentUiState.copy(isLoading = true, data = null, message = null)
                         }
                     }
                 }
-            } else {
-                hasInternetConnection(false)
             }
         }
     }
