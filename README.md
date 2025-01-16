@@ -4,8 +4,8 @@ This repo is a major rework/refactor of Dicoding Tourism App because it's deprec
 Reworked to be inline with current Modern Android Development (MAD). <br>
 
 Notes : <br>
-## Now using Hilt as the method for Dependency Injection!
-## To refer to Koin Dependency Injection implementation, go to 301-koin branch
+Now using Hilt as the method for Dependency Injection! <br>
+To refer to Koin Dependency Injection implementation, go to 301-koin branch <br>
 
 ## Application Specification Overview
 - [x] Offline-first app, with recommended approach by Google (utilizing Single Source of Truth of data)
