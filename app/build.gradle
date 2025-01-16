@@ -117,7 +117,9 @@ dependencies {
 
     // hilt
     implementation(libs.hilt.android)
-    implementation(libs.hilt.compiler)
+    kapt(libs.hilt.compiler)
+
+    implementation(libs.guava)
 }
 
 // Allow references to generated code

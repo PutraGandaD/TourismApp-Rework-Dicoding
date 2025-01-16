@@ -2,6 +2,7 @@ plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
+    alias(libs.plugins.hilt)
 }
 
 android {
@@ -52,4 +53,15 @@ dependencies {
     implementation(libs.room.ktx)
     annotationProcessor(libs.room.compiler)
     kapt(libs.room.compiler)
+
+    // hilt
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.compiler)
+
+    implementation(libs.guava)
+}
+
+// Allow references to generated code
+kapt {
+    correctErrorTypes = true
 }

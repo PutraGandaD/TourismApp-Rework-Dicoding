@@ -3,8 +3,9 @@ package com.dicoding.tourismapp.core.data.source.local
 import com.dicoding.tourismapp.core.data.source.local.entity.TourismEntity
 import com.dicoding.tourismapp.core.data.source.local.entity.TourismUpsert
 import com.dicoding.tourismapp.core.data.source.local.room.TourismDao
+import javax.inject.Inject
 
-class LocalDataSource(private val tourismDao: TourismDao) {
+class LocalDataSource @Inject constructor(private val tourismDao: TourismDao) {
     suspend fun getAllTourism(): List<TourismEntity> = tourismDao.getAllTourism()
 
     fun getFavoriteTourism() = tourismDao.getFavoriteTourism()

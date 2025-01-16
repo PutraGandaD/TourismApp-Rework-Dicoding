@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
+    alias(libs.plugins.hilt)
+    alias(libs.plugins.kotlin.kapt)
 }
 
 android {
@@ -44,4 +46,14 @@ dependencies {
 
     implementation libs.glide
 
+    // hilt
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.compiler)
+
+    implementation(libs.guava)
+}
+
+// Allow references to generated code
+kapt {
+    correctErrorTypes = true
 }

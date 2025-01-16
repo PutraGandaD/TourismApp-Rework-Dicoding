@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.dynamic.feature)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.kapt)
 }
 android {
     namespace 'com.dicoding.tourismapp.feature.maps'
@@ -67,4 +68,7 @@ dependencies {
     implementation(libs.koin.android)
     implementation(libs.koin.core.coroutines)
     implementation(libs.koin.androidx.workmanager)
+
+    implementation(libs.guava)
+
 }

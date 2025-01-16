@@ -36,4 +36,6 @@ dependencies {
     testImplementation libs.junit
     androidTestImplementation libs.test.ext.junit
     androidTestImplementation libs.espresso.core
+
+    implementation(libs.guava)
 }

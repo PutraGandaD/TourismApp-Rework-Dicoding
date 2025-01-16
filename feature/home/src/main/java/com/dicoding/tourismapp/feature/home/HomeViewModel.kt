@@ -6,13 +6,16 @@ import com.dicoding.tourismapp.core.domain.usecase.TourismUseCase
 import com.dicoding.tourismapp.core.utils.ConnectivityManager
 import com.dicoding.tourismapp.core.utils.Resource
 import com.dicoding.tourismapp.feature.home.HomeUiState
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class HomeViewModel(
+@HiltViewModel
+class HomeViewModel @Inject constructor(
     private val connectivityManager: ConnectivityManager,
     private val tourismUseCase: TourismUseCase
 ) : ViewModel() {

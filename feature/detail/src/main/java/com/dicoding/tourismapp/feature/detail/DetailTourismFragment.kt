@@ -7,18 +7,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.dicoding.tourismapp.feature.detail.databinding.FragmentDetailTourismBinding
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
+@AndroidEntryPoint
 class DetailTourismFragment : Fragment() {
-    private val detailTourismViewModel: DetailTourismViewModel by viewModel()
+    private val detailTourismViewModel: DetailTourismViewModel by viewModels()
     private var _binding: FragmentDetailTourismBinding? = null
     private val binding get() = _binding!!
 

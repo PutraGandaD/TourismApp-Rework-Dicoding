@@ -1,9 +1,6 @@
 package com.dicoding.tourismapp
 
 import android.app.Application
-import com.dicoding.tourismapp.core.di.databaseModule
-import com.dicoding.tourismapp.core.di.networkModule
-import com.dicoding.tourismapp.core.di.repositoryModule
 import dagger.hilt.android.HiltAndroidApp
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger

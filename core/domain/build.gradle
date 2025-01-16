@@ -2,6 +2,8 @@ plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-parcelize'
+    id 'kotlin-kapt'
+    alias(libs.plugins.hilt)
 }
 
 android {
@@ -39,4 +41,16 @@ dependencies {
     testImplementation libs.junit
     androidTestImplementation libs.test.ext.junit
     androidTestImplementation libs.espresso.core
+
+    // hilt
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.compiler)
+
+    implementation(libs.guava)
+}
+
+
+// Allow references to generated code
+kapt {
+    correctErrorTypes = true
 }
